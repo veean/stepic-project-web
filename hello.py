@@ -1,8 +1,8 @@
 def app(environ, start_response):
-    data= b"hello world!\n"
-    start_response("200 OK", [
-        ("Content-Type", "text/plain"),
-        ("Content-Length", str(len(data)))
-    ])
-    return iter([data])
+    status = "200 OK"
+    headers = [("Content-Type", "text/plain")]
+    start_response(status, )
+    url_payload =  environ['QUERY_STRING'].split('&')
+    env_dict = [element + "\r\n" for element in url_payload]
+    return env_dict
 
